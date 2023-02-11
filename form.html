@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <form>
+            <h2>Payment Form</h2>
+            <div class="account">
+                <legend>Account</legend>
+
+                <div class="fullnameContainer fieldDesign">
+                    <label for="fullname">
+                        <i class="material-icons">person</i>
+                    </label>
+                    <input type="text" name="fullname" id="fullname" placeholder="Full Name" required>
+                </div>
+
+                <div class="nicknameContainer fieldDesign">
+                    <label for="nickname">
+                        <i class="material-icons">person</i>
+                    </label>
+                    <input type="text" name="nickname" id="nickname" placeholder="Nickname">
+                </div>
+
+                <div class="emailContainer fieldDesign">
+                    <label for="email">
+                        <i class="material-icons">mail</i>
+                    </label>
+                    <input type="email" name="email" id="email" placeholder="Email Address" required>
+                </div>
+            </div>
+
+            <div class="dob">
+                <legend>Date of Birth</legend>
+                <div class="dobValue fieldDesign">
+                    <input type="date" name="dob" id="dob" required>
+                </div>
+            </div>
+
+            <div class="gender">
+                <legend>Gender</legend>
+                <div class="genderItemsContainer fieldDesign">
+                    <span class="genderItems" id="male">MALE</span>
+                    <span class="genderItems" id="female">FEMALE</span>
+                </div>
+            </div>
+
+            <div class="paymentDetails">
+                <legend>Payment Details</legend>
+
+                <div class="creditCard paymentMethods">
+                    <i class="material-icons">credit_card</i>
+                    <span>Credit Card</span>
+                </div>
+                <div class="paypal paymentMethods">
+                    <i class="material-icons">wallet</i>
+                    <span>PayPal Wallet</span>
+                </div>
+
+                <div class="cardNumber fieldDesign">
+                    <label for="cardNumber">
+                        <i class="material-icons">credit_card</i>
+                    </label>
+                    <input type="password" name="cardNumber" id="cardNumber" placeholder="Card Number" required>
+                </div>
+
+                <div class="cardCVC fieldDesign">
+                    <label for="cardCVC">
+                        <i class="material-icons">person</i>
+                    </label>
+                    <input type="password" name="cardCVC" id="cardCVC" placeholder="Card CVC" required>
+                </div>
+
+                <div class="fieldDesign cardExp">
+                    <input type="date" name="cardExp" id="cardExp" required>
+                </div>
+            </div>
+
+            <button class="submit">Pay Now</button>
+
+        </form>
+    </main>
+</body>
+</html>
