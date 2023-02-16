@@ -8,12 +8,13 @@ const cardCVC = document.querySelector("#cardCVC");
 const cardExp = document.querySelector("#cardExp");
 const paypalId = document.querySelector("#paypalId");
 const cardCVC_value = document.getElementById("cardCVC");
+const cardExp_value = document.getElementById("cardExp");
 
 let paymentMethod = "creditCard"; //by default credit card is selected
 
 dobInput.addEventListener("change", () => {
-    let dob = new Date(dobInput.value);
     const now = new Date();
+    let dob = new Date(dobInput.value);
     let age = now.getFullYear() - dob.getFullYear();
   
     // subtract 1 from age if current date is before birthday
@@ -78,6 +79,16 @@ cardCVC_value.addEventListener("input", () => {
         cardCVC.setCustomValidity("");
     } else {
         cardCVC.setCustomValidity("Please enter a valid CVC with exactly 3 digits.");
+    }
+});
+
+cardExp_value.addEventListener("input", ()=>{
+    const today = new Date();
+    let inputDate = new Date(cardExp_value.value);
+    if (inputDate < today) {
+        cardExp.setCustomValidity('Card has already expired. Please renew or use another card.');
+    } else {
+        cardExp.setCustomValidity('');
     }
 });
 
