@@ -1,3 +1,4 @@
+// variable declarations............
 const dobInput = document.getElementById("dob");
 const maleButton = document.querySelector("#male");
 const femaleButton = document.querySelector("#female");
@@ -10,9 +11,10 @@ const paypalId = document.querySelector("#paypalId");
 const cardCVC_value = document.getElementById("cardCVC");
 const cardExp_value = document.getElementById("cardExp");
 const cardNumber_value = document.getElementById("cardNumber");
-
 let paymentMethod = "creditCard"; //by default credit card is selected
 
+
+// validating date of birth to ensure user is not a minor
 dobInput.addEventListener("change", () => {
     const now = new Date();
     let dob = new Date(dobInput.value);
@@ -31,6 +33,8 @@ dobInput.addEventListener("change", () => {
     }
 });
 
+
+// below script is form changing the color of gender on click
 maleButton.addEventListener("click", () => {
     maleButton.classList.add("selected");
     femaleButton.classList.remove("selected");
@@ -41,6 +45,9 @@ femaleButton.addEventListener("click", () => {
     maleButton.classList.remove("selected");
 });
 
+
+// displaying credit card items on selecting credit card payment method
+// and hiding paypal items
 creditCard.addEventListener("click", () => {
     creditCard.classList.add("selected");
     paypal.classList.remove("selected");
@@ -54,25 +61,28 @@ creditCard.addEventListener("click", () => {
     cardExp.setAttribute("required","");
     
     paypalId.parentElement.classList.add("hide");
-    paypalId.removeAttribute("required");
+    paypalId.removeAttribute("required"); //required in case payment method is toggled
 });
 
+// displaying paypal items on selecting paypal payment method
+// and hiding credit card items
 paypal.addEventListener("click", () => {
     paypal.classList.add("selected");
     creditCard.classList.remove("selected");
-    paymentMethod = "paypal";
 
+    paymentMethod = "paypal";
     paypalId.parentElement.classList.remove("hide");
     paypalId.setAttribute("required","");
 
     cardNumber.parentElement.classList.add("hide");
-    cardNumber.removeAttribute("required");
+    cardNumber.removeAttribute("required"); //required in case payment method is toggled
     cardCVC.parentElement.classList.add("hide");
-    cardCVC.removeAttribute("required");
+    cardCVC.removeAttribute("required"); //required in case payment method is toggled
     cardExp.parentElement.classList.add("hide");
-    cardExp.removeAttribute("required");
+    cardExp.removeAttribute("required"); //required in case payment method is toggled
 });
 
+// validating credit card number to be of either 15 digits or 16 digits
 cardNumber.addEventListener("input", () => {
     let cardNumberValue = cardNumber.value;
     if (/^\d{15,16}$/.test(cardNumberValue)) {
@@ -82,6 +92,7 @@ cardNumber.addEventListener("input", () => {
     }
 });
 
+// validating card CVC to ensure a 3 digit entry
 cardCVC_value.addEventListener("input", () => {
     const value = cardCVC.value.trim();
     const valid = /^\d{3}$/.test(value);
@@ -92,6 +103,7 @@ cardCVC_value.addEventListener("input", () => {
     }
 });
 
+// validating card Expiry to ensure input date is not older than today
 cardExp_value.addEventListener("input", ()=>{
     const today = new Date();
     let inputDate = new Date(cardExp_value.value);
@@ -104,6 +116,8 @@ cardExp_value.addEventListener("input", ()=>{
 
 document.querySelector("form").addEventListener("submit", (event) => {
     event.preventDefault();
+//  since their is no specific destination to send form data,
+//  so for now, it'll be console logged after submission
     console.log("Full Name:", event.target.fullname.value);
     console.log("Nickname:", event.target.nickname.value);
     console.log("Email:", event.target.email.value);
@@ -118,6 +132,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
     else if (paymentMethod === "paypal") {
         console.log("Paypal ID:", event.target.paypalId.value);
     }
-
+//  since default form action is prevented forcefully at line 118,
+//  below line is required to reset form after submission
     document.getElementById("paymentForm").reset()
 });

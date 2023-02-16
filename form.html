@@ -15,23 +15,26 @@
     <main>
         <form action="#" method="POST" id="paymentForm">
             <h2>Payment Form</h2>
+            <!-- account section containing full name, nick name & email -->
             <div class="account">
                 <legend>Account</legend>
-
+                <!-- full name -->
                 <div class="fullnameContainer fieldDesign">
                     <label for="fullname">
                         <i class="material-icons">person</i>
                     </label>
                     <input type="text" name="fullname" id="fullname" placeholder="Full Name" required>
                 </div>
-
+                <!-- nickname -->
+                <!-- quick question: if full name is written with a space between "full" and "name"
+                                    then why nickname has no space in beween? -->
                 <div class="nicknameContainer fieldDesign">
                     <label for="nickname">
                         <i class="material-icons">person</i>
                     </label>
                     <input type="text" name="nickname" id="nickname" placeholder="Nickname">
                 </div>
-
+                <!-- email -->
                 <div class="emailContainer fieldDesign">
                     <label for="email">
                         <i class="material-icons">mail</i>
@@ -40,6 +43,7 @@
                 </div>
             </div>
 
+            <!-- for date of birth -->
             <div class="dob">
                 <legend>Date of Birth</legend>
                 <div class="dobValue fieldDesign">
@@ -47,6 +51,7 @@
                 </div>
             </div>
 
+            <!-- for gender -->
             <div class="gender">
                 <legend>Gender</legend>
                 <div class="genderItemsContainer fieldDesign">
@@ -54,38 +59,45 @@
                     <span class="genderItems" id="female">FEMALE</span>
                 </div>
             </div>
-
+            
+            <!-- for payment details and payment method -->
             <div class="paymentDetails">
                 <legend>Payment Details</legend>
-              
+
+                <!--  payment method options-->
+
+                <!-- credit card option -->
                 <div class="creditCard paymentMethods selected">
                   <i class="material-icons">credit_card</i>
                   <span>Credit Card</span>
                 </div>
-              
+                <!-- paypal option -->
                 <div class="paypal paymentMethods">
                   <i class="material-icons">wallet</i>
                   <span>PayPal Wallet</span>
                 </div>
-              
+                
+                <!-- payment input fields -->
+
+                <!-- card number -->
                 <div class="cardNumber fieldDesign">
                   <label for="cardNumber">
                     <i class="material-icons">credit_card</i>
                   </label>
                   <input type="password" name="cardNumber" id="cardNumber" placeholder="Card Number">
                 </div>
-              
+                <!-- card cvc -->
                 <div class="cardCVC fieldDesign">
                   <label for="cardCVC">
                     <i class="material-icons">person</i>
                   </label>
                   <input type="password" name="cardCVC" id="cardCVC" placeholder="Card CVC">
                 </div>
-              
+                <!-- card expiry date -->
                 <div class="fieldDesign cardExp">
                   <input type="date" name="cardExp" id="cardExp">
                 </div>
-              
+                <!-- paypal id (i have never used paypal so no idea how i accept payments) -->
                 <div class="paypalId fieldDesign hide">
                   <label for="paypalId">
                     <i class="material-icons">person</i>
@@ -94,7 +106,8 @@
                 </div>
               
             </div>
-              
+
+            <!-- submit button -->
             <button class="submit">Pay Now</button>
 
         </form>
