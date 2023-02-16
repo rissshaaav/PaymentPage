@@ -57,38 +57,119 @@
 
             <div class="paymentDetails">
                 <legend>Payment Details</legend>
-
-                <div class="creditCard paymentMethods">
-                    <i class="material-icons">credit_card</i>
-                    <span>Credit Card</span>
+              
+                <div class="creditCard paymentMethods selected">
+                  <i class="material-icons">credit_card</i>
+                  <span>Credit Card</span>
                 </div>
+              
                 <div class="paypal paymentMethods">
-                    <i class="material-icons">wallet</i>
-                    <span>PayPal Wallet</span>
+                  <i class="material-icons">wallet</i>
+                  <span>PayPal Wallet</span>
                 </div>
-
+              
                 <div class="cardNumber fieldDesign">
-                    <label for="cardNumber">
-                        <i class="material-icons">credit_card</i>
-                    </label>
-                    <input type="password" name="cardNumber" id="cardNumber" placeholder="Card Number" required>
+                  <label for="cardNumber">
+                    <i class="material-icons">credit_card</i>
+                  </label>
+                  <input type="password" name="cardNumber" id="cardNumber" placeholder="Card Number" required>
                 </div>
-
+              
                 <div class="cardCVC fieldDesign">
-                    <label for="cardCVC">
-                        <i class="material-icons">person</i>
-                    </label>
-                    <input type="password" name="cardCVC" id="cardCVC" placeholder="Card CVC" required>
+                  <label for="cardCVC">
+                    <i class="material-icons">person</i>
+                  </label>
+                  <input type="password" name="cardCVC" id="cardCVC" placeholder="Card CVC" required>
                 </div>
-
+              
                 <div class="fieldDesign cardExp">
-                    <input type="date" name="cardExp" id="cardExp" required>
+                  <input type="date" name="cardExp" id="cardExp" required>
                 </div>
+              
+                <div class="paypalId fieldDesign hide">
+                  <label for="paypalId">
+                    <i class="material-icons">person</i>
+                  </label>
+                  <input type="text" name="paypalId" id="paypalId" placeholder="PayPal ID" required>
+                </div>
+              
             </div>
+              
 
             <button class="submit">Pay Now</button>
 
         </form>
     </main>
+
+    <script>
+        const maleButton = document.querySelector("#male");
+        const femaleButton = document.querySelector("#female");
+        const creditCard = document.querySelector(".creditCard");
+        const paypal = document.querySelector(".paypal");
+        const cardNumber = document.querySelector("#cardNumber");
+        const cardCVC = document.querySelector("#cardCVC");
+        const cardExp = document.querySelector("#cardExp");
+        const paypalId = document.querySelector("#paypalId");
+
+        let paymentMethod = "creditCard";
+
+        maleButton.addEventListener("click", () => {
+            maleButton.classList.add("selected");
+            femaleButton.classList.remove("selected");
+        });
+
+        femaleButton.addEventListener("click", () => {
+            femaleButton.classList.add("selected");
+            maleButton.classList.remove("selected");
+        });
+
+        creditCard.addEventListener("click", () => {
+            creditCard.classList.add("selected");
+            paypal.classList.remove("selected");
+            paymentMethod = "creditCard";
+            cardNumber.parentElement.classList.remove("hide");
+            cardNumber.parentElement.classList.remove("hide");
+            cardCVC.parentElement.classList.remove("hide");
+            cardExp.parentElement.classList.remove("hide");
+            
+            paypalId.parentElement.classList.add("hide");
+            paypalId.removeAttribute("required");
+            // document.getElementById("paypalId").removeAttribute("required");
+
+        });
+
+        paypal.addEventListener("click", () => {
+            paypal.classList.add("selected");
+            creditCard.classList.remove("selected");
+            paymentMethod = "paypal";
+            paypalId.parentElement.classList.remove("hide");
+
+            cardNumber.parentElement.classList.add("hide");
+            cardNumber.removeAttribute("required");
+            cardCVC.parentElement.classList.add("hide");
+            cardCVC.removeAttribute("required");
+            cardExp.parentElement.classList.add("hide");
+            cardExp.removeAttribute("required");
+        });
+
+        document.querySelector("form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            console.log("Full Name:", event.target.fullname.value);
+            console.log("Nickname:", event.target.nickname.value);
+            console.log("Email:", event.target.email.value);
+            console.log("Date of Birth:", event.target.dob.value);
+            console.log("Gender:", document.querySelector(".gender .selected").textContent);
+            console.log("Payment Method:", paymentMethod);
+            if (paymentMethod === "creditCard") {
+                console.log("Card Number:", event.target.cardNumber.value);
+                console.log("Card CVC:", event.target.cardCVC.value);
+                console.log("Card Expiration:", event.target.cardExp.value);
+            }
+            else if (paymentMethod === "paypal") {
+                console.log("Paypal ID:", event.target.paypalId.value);
+            }
+        });
+
+    </script>
 </body>
 </html>
