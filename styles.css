@@ -108,7 +108,7 @@ h2{
 .paypal{
     grid-area: paypal;
 }
-.cardNumber{
+.cardNumber, .paypalId{
     grid-area: cardNumber;
 }
 .cardCVC{
