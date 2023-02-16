@@ -9,6 +9,7 @@ const cardExp = document.querySelector("#cardExp");
 const paypalId = document.querySelector("#paypalId");
 const cardCVC_value = document.getElementById("cardCVC");
 const cardExp_value = document.getElementById("cardExp");
+const cardNumber_value = document.getElementById("cardNumber");
 
 let paymentMethod = "creditCard"; //by default credit card is selected
 
@@ -70,6 +71,15 @@ paypal.addEventListener("click", () => {
     cardCVC.removeAttribute("required");
     cardExp.parentElement.classList.add("hide");
     cardExp.removeAttribute("required");
+});
+
+cardNumber.addEventListener("input", () => {
+    let cardNumberValue = cardNumber.value;
+    if (/^\d{15,16}$/.test(cardNumberValue)) {
+      cardNumber.setCustomValidity('');
+    } else {
+      cardNumber.setCustomValidity('Please enter a valid card number (15 or 16 digits).');
+    }
 });
 
 cardCVC_value.addEventListener("input", () => {
